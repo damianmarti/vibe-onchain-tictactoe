@@ -1,11 +1,12 @@
 "use client";
 
+import { Suspense } from "react";
 import { TicTacToe } from "~~/components/TicTacToe";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
       <TicTacToe />
-    </main>
+    </Suspense>
   );
 }
