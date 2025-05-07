@@ -64,9 +64,9 @@ export const TicTacToe = () => {
     ? {
         playerX: gameData[0],
         playerO: gameData[1],
-        currentTurn: gameData[2] === 0 ? "None" : gameData[2] === 1 ? "X" : "O",
-        board: gameData[3].map((cell: number) => (cell === 0 ? "None" : cell === 1 ? "X" : "O")),
-        state: gameData[4] === 0 ? "Active" : gameData[4] === 1 ? "Won" : "Draw",
+        currentTurn: mapPlayer(gameData[2]),
+        board: gameData[3].map((cell: number) => mapPlayer(cell)),
+        state: mapGameState(gameData[4]),
         winner: gameData[5],
       }
     : undefined;
