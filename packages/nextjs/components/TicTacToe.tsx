@@ -81,7 +81,7 @@ export const TicTacToe = () => {
     functionName: "getGame",
     args: [gameId],
     query: {
-      enabled: gameId !== undefined,
+      enabled: gameId !== undefined && gameId !== null,
     },
   }) as { data: GameData | undefined; refetch: () => void };
 
@@ -274,7 +274,7 @@ export const TicTacToe = () => {
         <p className="text-white/90 text-base">Play on the blockchain!</p>
       </div>
 
-      {!gameId ? (
+      {gameId === undefined ? (
         <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-6 w-[95vw] sm:w-[480px] mx-4">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Create New Game</h2>
           <div className="space-y-4">
