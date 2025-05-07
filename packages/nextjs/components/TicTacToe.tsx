@@ -26,6 +26,32 @@ type GameData = readonly [
   string, // winner
 ];
 
+const mapPlayer = (value: number): Player => {
+  switch (value) {
+    case 0:
+      return "None";
+    case 1:
+      return "X";
+    case 2:
+      return "O";
+    default:
+      return "None";
+  }
+};
+
+const mapGameState = (value: number): GameState => {
+  switch (value) {
+    case 0:
+      return "Active";
+    case 1:
+      return "Won";
+    case 2:
+      return "Draw";
+    default:
+      return "Active";
+  }
+};
+
 export const TicTacToe = () => {
   const { address } = useAccount();
   const router = useRouter();
@@ -65,7 +91,7 @@ export const TicTacToe = () => {
         playerX: gameData[0],
         playerO: gameData[1],
         currentTurn: mapPlayer(gameData[2]),
-        board: gameData[3].map((cell: number) => mapPlayer(cell)),
+        board: gameData[3].map(mapPlayer),
         state: mapGameState(gameData[4]),
         winner: gameData[5],
       }
